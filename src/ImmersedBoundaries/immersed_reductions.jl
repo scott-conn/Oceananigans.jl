@@ -83,4 +83,4 @@ end
     return evaluate_condition(condition.func, i, j, k, ibg, args...) & !(is_immersed_column(i, j, k, condition.immersed_column))
 end 
 
-@inline is_immersed_column(i, j, k, column) = ture #@inbounds column[i, j, k] == 0
+@inline is_immersed_column(i, j, k, column) = @inbounds column[i, j, k] == 0
