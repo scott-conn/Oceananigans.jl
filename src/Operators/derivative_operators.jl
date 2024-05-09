@@ -88,3 +88,11 @@ for dir in (:x, :y, :z), LX in (:ᶜ, :ᶠ), LY in (:ᶜ, :ᶠ), LZ in (:ᶜ, :�
         @inline $operator(i, j, k, grid, c) = $area(i, j, k, grid) * $derivative(i, j, k, grid, c)
     end
 end
+
+using Oceananigans.ImmersedBoundaries: ZIRF, ImmersedBoundaryGrid
+@inline ∂xᶜᶜᶜ(i, j, k, ibg::ImmersedBoundaryGrid, U::ZIRF) = ∂xᶜᶜᶜ(i, j, k, ibg.underlying_grid, U)
+@inline ∂yᶜᶜᶜ(i, j, k, ibg::ImmersedBoundaryGrid, U::ZIRF) = ∂yᶜᶜᶜ(i, j, k, ibg.underlying_grid, U)
+@inline ∂yᶠᶠᶜ(i, j, k, ibg::ImmersedBoundaryGrid, U::ZIRF) = ∂yᶠᶠᶜ(i, j, k, ibg.underlying_grid, U)
+@inline ∂xᶠᶠᶜ(i, j, k, ibg::ImmersedBoundaryGrid, U::ZIRF) = ∂xᶠᶠᶜ(i, j, k, ibg.underlying_grid, U)
+@inline ∂xᶠᶜᶜ(i, j, k, ibg::ImmersedBoundaryGrid, U::ZIRF) = ∂xᶠᶜᶜ(i, j, k, ibg.underlying_grid, U)
+@inline ∂yᶜᶠᶜ(i, j, k, ibg::ImmersedBoundaryGrid, U::ZIRF) = ∂yᶜᶠᶜ(i, j, k, ibg.underlying_grid, U)
